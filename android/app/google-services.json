@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "237593029065",
+    "project_id": "login-singup-test",
+    "storage_bucket": "login-singup-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:237593029065:android:d7964cc4231a71ac612018",
+        "android_client_info": {
+          "package_name": "com.example.batch_d_login_singup_fiarbase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "237593029065-lmhd6qguoc13fjqogupah64pqjj0qa4f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhl9yuagt4QsXKH5dSx13RQfKS1LIM1rw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "237593029065-lmhd6qguoc13fjqogupah64pqjj0qa4f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
