@@ -1,8 +1,10 @@
 import 'package:batch_d_login_singup_fiarbase/helpar/custom_button.dart';
 import 'package:batch_d_login_singup_fiarbase/helpar/custom_text_from_field.dart';
 import 'package:batch_d_login_singup_fiarbase/screen/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SingUp extends StatefulWidget {
   const SingUp({Key? key}) : super(key: key);
@@ -10,10 +12,12 @@ class SingUp extends StatefulWidget {
   @override
   _SingUpState createState() => _SingUpState();
 }
+
+final _auth = FirebaseAuth.instance;
 TextEditingController _emailController = TextEditingController();
 TextEditingController _passController = TextEditingController();
 TextEditingController _conPassController = TextEditingController();
-final GlobalKey <FormState> _formKey = GlobalKey();
+final GlobalKey <FormState> _formKeySingUp = GlobalKey();
 
 class _SingUpState extends State<SingUp> {
   @override
@@ -23,7 +27,7 @@ class _SingUpState extends State<SingUp> {
       SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Form(
-          key: _formKey,
+          key: _formKeySingUp,
           child: Column(
             children: [
               SizedBox(width: 80,),
@@ -52,9 +56,10 @@ class _SingUpState extends State<SingUp> {
               SizedBox(height: 20,),
               InkWell(
                 onTap: (){
-                  if(_formKey.currentState!.validate())
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context)=>LogIn()));
+                  singUp(
+                  _emailController.text,
+                      _passController.text,
+                      context);
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20.0,right: 20),
@@ -97,4 +102,19 @@ class _SingUpState extends State<SingUp> {
       ),
     );
   }
+}
+void singUp(String email, String password, context)async{
+  if(_formKeySingUp.currentState!.validate())
+    {
+      await _auth.createUserWithEmailAndPassword(
+          email: email, password: password).then((value) => {
+            Fluttertoast.showToast(
+                msg: "Account Created Successfully"
+            ),
+              Navigator.push(context,
+                 MaterialPageRoute(builder: (context)=>LogIn()))
+          }).catchError((e){
+        Fluttertoast.showToast(msg: e.message);
+      });
+    }
 }

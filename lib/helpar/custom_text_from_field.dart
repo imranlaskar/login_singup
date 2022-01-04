@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:batch_d_login_singup_fiarbase/utill/all_color.dart';
 import 'package:flutter/material.dart';
 

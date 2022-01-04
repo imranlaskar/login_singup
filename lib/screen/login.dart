@@ -25,66 +25,69 @@ class _LogInState extends State<LogIn> {
       body:
       Form(
         key: _formKey,
-        child: Column(
-          children: [
-            SizedBox(width: 80,),
-            Icon(Icons.ac_unit,size: 200,),
-            SizedBox(height: 20,),
-            CoustomTextFormField(
-              obscureValue: false,
-              emailController: _emailController,
-              hintText: 'Enter Email',
-              labelText: 'Email',
-              ),
-            SizedBox(height: 20,),
-            CoustomTextFormField(
-              obscureValue: true,
-              emailController: _passController,
-              hintText: 'Enter Password',
-              labelText: 'Password',
-              ),
-            SizedBox(height: 20,),
-            InkWell(
-              onTap: (){
-                singIn(
-                    _emailController.text,
-                    _passController.text, context);
-              },
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20.0,right: 20),
-                child: CoustomButton(
-                    buttonHight: 40,
-                    buttonWidth: MediaQuery.of(context).size.width,
-                    btnTextColor: Colors.white,
-                    buttonText: "LogIn"
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              SizedBox(width: 80,),
+              Icon(Icons.ac_unit,size: 200,),
+              SizedBox(height: 20,),
+              CoustomTextFormField(
+                obscureValue: false,
+                emailController: _emailController,
+                hintText: 'Enter Email',
+                labelText: 'Email',
                 ),
-              ),
-            ),
-            SizedBox(height: 20,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Don't have a account ",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black
+              SizedBox(height: 20,),
+              CoustomTextFormField(
+                obscureValue: true,
+                emailController: _passController,
+                hintText: 'Enter Password',
+                labelText: 'Password',
+                ),
+              SizedBox(height: 20,),
+              InkWell(
+                onTap: (){
+                  singIn(
+                      _emailController.text,
+                      _passController.text, context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20.0,right: 20),
+                  child: CoustomButton(
+                      buttonHight: 40,
+                      buttonWidth: MediaQuery.of(context).size.width,
+                      btnTextColor: Colors.white,
+                      buttonText: "LogIn"
                   ),
                 ),
-                InkWell(
-                  onTap: (){
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context)=>SingUp()));
-                  },
-                  child: Text('SingUp',
+              ),
+              SizedBox(height: 20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Don't have a account ",
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.indigo
-                    ),),
-                )
-              ],
-            )
-          ],
+                      color: Colors.black
+                    ),
+                  ),
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context)=>SingUp()));
+                    },
+                    child: Text('SingUp',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.indigo
+                      ),),
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
